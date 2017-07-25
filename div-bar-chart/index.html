@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Div Bar Chart</title>
+		<script type="text/javascript" src="../d3/d3.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var dataset = [];
+			for(var i = 1; i <= 100; i++){
+				dataset.push(Math.round(Math.random() * 20 + 1));
+			}
+			var w = 500;
+			var h = 80;
+			var barPadding = 2;
+			d3.select("body").selectAll("div")
+			.data(dataset)
+			.enter()
+			.append("div")
+			.style({
+				"width": (w / (dataset.length) - barPadding) + "px",
+				"background": "teal",
+				"margin": barPadding + "px",
+				"display": "inline-block",
+				"height": function(d){
+					return d * 5 + "px"
+				}
+			});
+		</script>
+	</body>
+</html>

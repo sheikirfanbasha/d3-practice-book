@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Svg Bar Chart</title>
+	<script type="text/javascript" src="../d3/d3.js"></script>
+	<script type="text/javascript" src="../utils/util.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+	var dataset = [5, 10, 15, 20, 25, 30];
+	dataset = genRandomDataSet(100);
+	var w = 500;
+	var h = 200;
+	var barPadding = 2;
+	var svg = d3.select("body").append("svg");
+	svg
+	.attr("width", w)
+	.attr("height", h)
+	.selectAll("rect")
+	.data(dataset)
+	.enter()
+	.append("rect")
+	.attr({
+		"x": function(d, i){
+			return i * Math.round((w / dataset.length));
+		},
+		"y": function(d){
+			return h - d * 5;
+		},
+		"width": Math.round((w / dataset.length) - barPadding),
+		"height": function(d){
+			return d * 5;
+		},
+		"fill": "teal"
+	})
+
+	</script>
+</body>
+</html>
